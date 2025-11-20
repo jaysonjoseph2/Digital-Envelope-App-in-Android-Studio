@@ -3,6 +3,7 @@
 This document provides a technical overview of the architecture behind the Digital Envelope Android Application, which implements a hybrid cryptographic system for secure file encryption and decryption.
 
 **IMPORTANT**
+
 **This code was designed to be ran in Android Studio via cloning the repository. Trying in any other environement might cause unintended errors.** 
 
 **Project Structure**
