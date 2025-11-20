@@ -1,8 +1,8 @@
-Digital Envelope – Architecture Overview
+**Digital Envelope – Architecture Overview**
 
 This document provides a technical overview of the architecture behind the Digital Envelope Android Application, which implements a hybrid cryptographic system for secure file encryption and decryption.
 
-📁 Project Structure
+**Project Structure**
 
 The application follows a modular Android architecture with clear separation between:
 
@@ -28,7 +28,7 @@ Data Models (encrypted envelope format)
 
 /layout (XML UI files)
 
-🖥️ UI Layer (Activities)
+**UI Layer (Activities)**
 SplashActivity
 
 Displays a startup screen before launching the main interface.
@@ -61,7 +61,7 @@ Decrypting the file contents
 
 Each Activity uses a dedicated XML layout file for clean separation of UI and logic.
 
-🔐 Cryptography Layer (Utility Classes)
+**Cryptography Layer (Utility Classes)**
 CryptoUtils
 
 Implements hybrid cryptography:
@@ -84,7 +84,7 @@ Private key → decrypt
 
 This hybrid model mirrors systems like PGP, S/MIME, and secure cloud storage.
 
-📦 Data Model
+**Data Model**
 EnvelopeFile
 
 A serialized container holding everything needed for later decryption:
@@ -97,7 +97,7 @@ AES-encrypted file bytes
 
 This serves as the app’s secure file format.
 
-🔄 Encryption Workflow
+**Encryption Workflow**
 
 User selects a file
 
@@ -117,7 +117,7 @@ IV
 
 Envelope saved to device storage
 
-🔁 Decryption Workflow
+**Decryption Workflow**
 
 User selects an envelope file
 
@@ -129,13 +129,10 @@ AES decrypts file content
 
 Plaintext restored to storage
 
-✔ Architectural Strengths
+**Future Improvements & Enhancements**
 
-Clear separation of concerns
-Activities = UI, Utils = crypto logic, Models = structured data
+Add support for selecting and encrypting larger files
 
-Hybrid cryptography
-AES ensures speed; RSA ensures secure key exchange
+Add a digital signature for authentication
 
-Extensible design
-Easy to upgrade algorithms, UI components, or storage formats
+Cleaner app design
