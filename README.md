@@ -63,7 +63,7 @@ Limited to local device -
 The application performs all cryptographic operations and file handling exclusively on the user’s device. It does not support cloud syncing, remote decryption, or cross-device access, meaning encrypted envelopes must be manually transferred if needed elsewhere.
 
 Add support for selecting and encrypting larger files -
-While functional for typical documents and media, the current implementation may struggle with very large files. Expanding file-size support would allow users to securely handle high-resolution media, archives, and large assets without manual compression.
+While functional for word documents and text files, the current implementation may struggle with very large files and files that include images. Expanding file-size support would allow users to securely handle high-resolution media, archives, and large assets without manual compression.
 
 Add a digital signature for authentication -
 Integrating digital signatures ensures that recipients can verify the sender’s identity and confirm the file has not been tampered with.
