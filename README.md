@@ -43,16 +43,19 @@ The encryption workflow begins when the user selects a file. The application gen
 
 The decryption workflow starts with the user selecting an envelope file. The app deserializes the EnvelopeFile, decrypts the AES key using the RSA private key, applies AES-GCM decryption to recover the original file bytes, and writes the restored file back into device storage.
 
-**Future Improvements & Enhancements**
+**Limitations & Future Improvements**
+
+Local-device availability only
+The application performs all cryptographic operations and file handling exclusively on the user’s device. It does not support cloud syncing, remote decryption, or cross-device access, meaning encrypted envelopes must be manually transferred if needed elsewhere.
 
 Add support for selecting and encrypting larger files
-Expanding file-size support would allow users to securely handle high-resolution media, archives, and other large assets without manual compression.
+While functional for typical documents and media, the current implementation may struggle with very large files. Expanding file-size support would allow users to securely handle high-resolution media, archives, and large assets without manual compression.
 
 Add a digital signature for authentication
 Integrating digital signatures ensures that recipients can verify the sender’s identity and confirm the file has not been tampered with.
 
 Cleaner app design
-The app itself is very basic with a lot of whitespace. Updating the UI would improve usability and can improve user satifaction.
+The app itself is very basic with a lot of whitespace. The app includes only essential UI components and provides limited runtime feedback during long operations. This may lead to reduced usability or confusion during encryption and decryption tasks. Updating the UI would improve usability and can improve user satifaction.
 
 ## License
 
