@@ -4,135 +4,52 @@ This document provides a technical overview of the architecture behind the Digit
 
 **Project Structure**
 
-The application follows a modular Android architecture with clear separation between:
-
-UI Activities (user interaction)
-
-Utility Classes (cryptography + I/O)
-
-Data Models (encrypted envelope format)
-
-/app
- ├── activities/
- │    ├── SplashActivity.java
- │    ├── MainActivity.java
- │    ├── EncryptActivity.java
- │    └── DecryptActivity.java
- │
- ├── utils/
- │    ├── CryptoUtils.java
- │    └── IOUtils.java
- │
- └── models/
-      └── EnvelopeFile.java
-
-/layout (XML UI files)
+The project is organized into activities that manage user interactions, utility classes that encapsulate cryptographic and file-handling operations, and data models used for representing encrypted content. The high-level structure includes the activities folder containing SplashActivity, MainActivity, EncryptActivity, and DecryptActivity; the utils folder containing CryptoUtils and IOUtils; and the models folder containing the EnvelopeFile class, with corresponding UI layouts stored under the Android XML layout directory.
 
 **UI Layer (Activities)**
-SplashActivity
 
-Displays a startup screen before launching the main interface.
+SplashActivity
+This activity presents the initial loading screen and performs any required initialization before transitioning into the main application interface.
 
 MainActivity
-
-Central hub where users choose between encryption or decryption.
+This screen serves as the central control hub where users choose between performing encryption or decryption operations.
 
 EncryptActivity
-
-Handles:
-
-File selection
-
-AES key generation
-
-RSA public key usage
-
-Creating the encrypted envelope
+This activity guides the user through selecting a file, generating the AES key and IV, applying RSA public key encryption to protect the AES key, and creating the final encrypted envelope that will be stored on the device.
 
 DecryptActivity
+This activity allows the user to load an existing envelope file, uses the RSA private key to recover the AES key, performs AES decryption, and restores the original file to the device’s storage.
 
-Handles:
-
-Importing an existing envelope file
-
-Using RSA private key to recover AES key
-
-Decrypting the file contents
-
-Each Activity uses a dedicated XML layout file for clean separation of UI and logic.
+Each activity uses a dedicated XML layout file to maintain a clean separation between user interface design and core application logic.
 
 **Cryptography Layer (Utility Classes)**
+
 CryptoUtils
+This class implements the hybrid cryptographic model used by the app, combining AES-GCM for encrypting the file’s binary data with RSA-OAEP for encrypting the AES key. AES-GCM is chosen for its performance and built-in authentication tags, ensuring both confidentiality and integrity, while RSA-OAEP provides secure public-key encryption needed to wrap the symmetric AES key.
 
-Implements hybrid cryptography:
-
-AES-GCM (Symmetric Encryption)
-
-Used for encrypting file contents
-
-Random AES key & IV generated
-
-GCM provides integrity via authentication tags
-
-RSA-OAEP (Asymmetric Encryption)
-
-Used to encrypt the AES key
-
-Public key → encrypt
-
-Private key → decrypt
-
-This hybrid model mirrors systems like PGP, S/MIME, and secure cloud storage.
+IOUtils
+This class is responsible for safely reading and writing files, handling byte streams, and managing how encrypted and decrypted data is moved between storage and memory, allowing Activities to remain focused solely on workflow logic rather than low-level I/O details.
 
 **Data Model**
+
 EnvelopeFile
-
-A serialized container holding everything needed for later decryption:
-
-RSA-encrypted AES key
-
-AES IV
-
-AES-encrypted file bytes
-
-This serves as the app’s secure file format.
+The EnvelopeFile model encapsulates the encrypted data produced during the encryption process. It stores the RSA-encrypted AES key, the AES IV, and the AES-encrypted file bytes together in one serialized structure so that all information required for decryption is bundled into a single object.
 
 **Encryption Workflow**
 
-User selects a file
-
-AES key + IV generated
-
-File encrypted with AES-GCM
-
-AES key encrypted with RSA public key
-
-EnvelopeFile created containing:
-
-Encrypted file bytes
-
-RSA-encrypted AES key
-
-IV
-
-Envelope saved to device storage
+The encryption workflow begins when the user selects a file. The application generates a random AES key and IV, encrypts the file contents using AES-GCM, encrypts the AES key using the RSA public key, creates an EnvelopeFile containing the encrypted file bytes, encrypted AES key, and IV, and finally writes the envelope to device storage for later retrieval.
 
 **Decryption Workflow**
 
-User selects an envelope file
-
-Envelope parsed into EnvelopeFile
-
-RSA private key decrypts AES key
-
-AES decrypts file content
-
-Plaintext restored to storage
+The decryption workflow starts with the user selecting an envelope file. The app deserializes the EnvelopeFile, decrypts the AES key using the RSA private key, applies AES-GCM decryption to recover the original file bytes, and writes the restored file back into device storage.
 
 **Future Improvements & Enhancements**
 
 Add support for selecting and encrypting larger files
+Expanding file-size support would allow users to securely handle high-resolution media, archives, and other large assets without manual compression.
 
 Add a digital signature for authentication
+Integrating digital signatures ensures that recipients can verify the sender’s identity and confirm the file has not been tampered with.
 
 Cleaner app design
+The app itself is very basic with a lot of whitespace. Updating the UI would improve usability and can improve user satifaction.
