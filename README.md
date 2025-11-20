@@ -2,6 +2,9 @@
 
 This document provides a technical overview of the architecture behind the Digital Envelope Android Application, which implements a hybrid cryptographic system for secure file encryption and decryption.
 
+**IMPORTANT**
+**This code was designed to be ran in Android Studio via cloning the repository. Trying in any other environement might cause unintended errors.** 
+
 **Project Structure**
 
 The project is organized into activities that manage user interactions, utility classes that encapsulate cryptographic and file-handling operations, and data models used for representing encrypted content. The high-level structure includes the activities folder containing SplashActivity, MainActivity, EncryptActivity, and DecryptActivity; the utils folder containing CryptoUtils and IOUtils; and the models folder containing the EnvelopeFile class, with corresponding UI layouts stored under the Android XML layout directory.
