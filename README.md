@@ -4,7 +4,7 @@ This document provides a technical overview of the architecture behind the Digit
 
 **IMPORTANT**
 
-**This code was designed to be ran in Android Studio via cloning the repository. Trying in any other environment might cause unintended errors.** 
+**This code is meant to demonstrate a simple digital evnvelope method and is not recommended to be used for confidentiial files. The app itself designed to be ran in Android Studio via cloning the repository. Trying in any other environment might cause unintended errors.** 
 
 **Project Structure**
 
