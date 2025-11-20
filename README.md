@@ -24,29 +24,29 @@ Inital Vector - IV
 
 **UI Layer (Activities)**
 
-SplashActivity
+SplashActivity -
 This activity presents the initial loading screen and performs any required initialization before transitioning into the main application interface.
 
-MainActivity
+MainActivity -
 This screen serves as the central control hub where users choose between performing encryption or decryption operations.
 
-EncryptActivity
+EncryptActivity -
 This activity guides the user through selecting a file and creating the final encrypted envelope that will be stored on the device.
 
-DecryptActivity
+DecryptActivity -
 This activity allows the user to load an existing envelope file and restores the original file to the device’s storage.
 
 **Cryptography Layer (Utility Classes)**
 
-CryptoUtils
+CryptoUtils -
 This class implements the hybrid cryptographic model used by the app, combining AES-GCM for encrypting the file’s binary data with RSA-OAEP for encrypting the AES key. I used AES-GCM for its performance and built-in authentication tags, ensuring both confidentiality and integrity, while RSA-OAEP provides secure public-key encryption needed to wrap the symmetric AES key for that extra layer of security.
 
-IOUtils
+IOUtils -
 Since I am working with Android SDK API 24, this utility class is needed safely reading and writing files, handling byte streams, and managing how encrypted and decrypted data is moved between storage and memory.
 
 **Data Model**
 
-EnvelopeFile
+EnvelopeFile -
 The EnvelopeFile model has the encrypted data produced during the encryption process. It stores the RSA-encrypted AES key, the AES IV, and the AES-encrypted file bytes together in one main structure so that all information required for decryption is bundled into a single object.
 
 **Encryption Workflow**
@@ -59,16 +59,16 @@ The decryption workflow starts with the user selecting an envelope file previous
 
 **Limitations & Future Improvements**
 
-Local-device availability only
+Limited to local device -
 The application performs all cryptographic operations and file handling exclusively on the user’s device. It does not support cloud syncing, remote decryption, or cross-device access, meaning encrypted envelopes must be manually transferred if needed elsewhere.
 
-Add support for selecting and encrypting larger files
+Add support for selecting and encrypting larger files -
 While functional for typical documents and media, the current implementation may struggle with very large files. Expanding file-size support would allow users to securely handle high-resolution media, archives, and large assets without manual compression.
 
-Add a digital signature for authentication
+Add a digital signature for authentication -
 Integrating digital signatures ensures that recipients can verify the sender’s identity and confirm the file has not been tampered with.
 
-Cleaner app design
+Cleaner app design -
 The app itself is very basic with a lot of whitespace. The app includes only essential UI components and provides limited runtime feedback during long operations. This may lead to reduced usability or confusion during encryption and decryption tasks. Updating the UI would improve usability and can improve user satifaction.
 
 ## License
