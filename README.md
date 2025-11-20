@@ -71,6 +71,16 @@ Integrating digital signatures ensures that recipients can verify the sender’s
 Cleaner app design -
 The app itself is very basic with a lot of whitespace. The app includes only essential UI components and provides limited runtime feedback during long operations. This may lead to reduced usability or confusion during encryption and decryption tasks. Updating the UI would improve usability and can improve user satisfaction.
 
+**Step-by-step Guide for Mobile App**
+
+1.	Once you have the app running, you can click on either the encrypt or decrypt button.
+2.	After clicking the encrypt button, you can follow the steps on the screen that read “Select a file to encrypt then you can save it in the downloads folder”.
+3.	After clicking the decrypt button, you can follow the steps on the screen that read “Select an encrypted file and save the decrypted output”.
+4.	To add a file, you can either drag and drop a document from file explorer (or Finder on MAC) into the downloads folder in the simulator.
+5.	Optionally, you can upload the file in Android Studio by going to device explorer, sdcard, Download, right-click, and press upload.
+6.	To download the encrypted and/or decrypted file, go to the downloads folder as mentioned earlier, find the file you wish to download, right-click, and press save as.
+7.	NOTE: The decrypt button will not do anything when you first run the app, as nothing has been encrypted using the app. 
+
 ## License
 
     Copyright [2025] [Jayson Joseph]
