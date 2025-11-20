@@ -4,7 +4,7 @@ This document provides a technical overview of the architecture behind the Digit
 
 **IMPORTANT**
 
-**This code was designed to be ran in Android Studio via cloning the repository. Trying in any other environement might cause unintended errors.** 
+**This code was designed to be ran in Android Studio via cloning the repository. Trying in any other environment might cause unintended errors.** 
 
 **Project Structure**
 
@@ -20,7 +20,7 @@ Rivest, Shamir, and Adleman - RSA
 
 Optimal Asymmetric Encryption Padding - OAEP
 
-Inital Vector - IV
+Initial Vector - IV
 
 **UI Layer (Activities)**
 
@@ -69,7 +69,7 @@ Add a digital signature for authentication -
 Integrating digital signatures ensures that recipients can verify the sender’s identity and confirm the file has not been tampered with.
 
 Cleaner app design -
-The app itself is very basic with a lot of whitespace. The app includes only essential UI components and provides limited runtime feedback during long operations. This may lead to reduced usability or confusion during encryption and decryption tasks. Updating the UI would improve usability and can improve user satifaction.
+The app itself is very basic with a lot of whitespace. The app includes only essential UI components and provides limited runtime feedback during long operations. This may lead to reduced usability or confusion during encryption and decryption tasks. Updating the UI would improve usability and can improve user satisfaction.
 
 ## License
 
